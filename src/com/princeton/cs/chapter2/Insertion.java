@@ -6,11 +6,9 @@ public class Insertion {
 	public static void sort(Comparable[] a){
 		//将a[]升序排列
 		int N=a.length;
-		for(int i=0;i<N-1;i++){
-			int min=i;
-			for(int j=i+1;j<N;j++){
-				if(less(a[j], a[min]))min=j;
-				exch(a, i, min);
+		for(int i=1;i<N;i++){
+			for(int j=i;j>0&&less(a[j], a[j-1]);j--){
+				exch(a, j, j-1);
 			}
 		}
 	}
@@ -39,7 +37,58 @@ public class Insertion {
 		//String[] a=In.readStrings();
 		String[] a={"S","O", "R" ,"T", "E", "X", "A", "M", "P", "L", "E"};
 		sort(a);
-		assert isSorted(a);
-		show(a);
+		//assert isSorted(a);
+		//show(a);
+		//int[] inta={1,7,3,4,8,1,4,0};
+		//selectionSort1(inta);
+	}
+	/**
+	 * 插入排序-int类型的数据
+	 */
+	public static void selectionSort(Double[] a){
+		if(a==null||a.length==0){
+			System.out.println("数组为空");
+		}else{
+			for(int i=1;i<a.length;i++){
+				double temp=a[i];
+				int p=i;
+				for(int j=i-1;j>=0;j--){
+					if(temp<a[j]){
+						a[j+1]=a[j];
+						p-=1;
+					}else{
+						continue;
+					}
+				}
+				a[p]=temp;
+			}
+//			for(int i=0;i<a.length;i++){
+//				System.out.print(a[i]+" ");
+//			}
+		}
+	}
+	
+	public static void selectionSort1(Double[] a){
+		if(a==null||a.length==0){
+			System.out.println("数组为空");
+		}else{
+			for(int i=1;i<a.length;i++){
+				double temp=a[i];
+				//int p=i;
+				for(int j=i-1;j>=0;j--){
+					if(temp<a[j]){
+						a[j+1]=a[j];
+						a[j]=temp;
+						//p-=1;
+					}else{
+						continue;
+					}
+				}
+				//a[p]=temp;
+			}
+			/*for(int i=0;i<a.length;i++){
+				System.out.print(a[i]+" ");
+			}*/
+		}
 	}
 }

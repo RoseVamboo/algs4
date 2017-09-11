@@ -39,7 +39,33 @@ public class Selection {
 		//String[] a=In.readStrings();
 		String[] a={"S","O", "R" ,"T", "E", "X", "A", "M", "P", "L", "E"};
 		sort(a);
-		assert isSorted(a);
-		show(a);
+		//assert isSorted(a);
+		//show(a);
+		int[] inta={1,7,3,4,8,1,4,0};
+		selectionSort(inta);
+	}
+	/**
+	 * 选择排序-int类型的数据
+	 */
+	public static void selectionSort(int[] a){
+		if(a==null||a.length==0){
+			System.out.println("数组不存在或没有值");
+		}else{
+			for(int i=0;i<a.length-1;i++){
+				int min=a[i];
+				int index=i;
+				for(int j=i+1;j<a.length;j++){
+					if(a[j]<min){
+						min=a[j];
+						index=j;
+					}
+				}
+				a[index]=a[i];
+				a[i]=min;
+			}
+			for(int i=0;i<a.length;i++){
+				System.out.print(a[i]+" ");
+			}
+		}
 	}
 }
